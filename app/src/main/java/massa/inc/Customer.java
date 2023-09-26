@@ -1,11 +1,11 @@
 package massa.inc;
 
-public class Cliente {
+public class Customer {
     private String name;
     private String CNPJ;
     private String address;
 
-    public Cliente (String name, String CNPJ, String address) {
+    public Customer (String name, String CNPJ, String address) {
         this.name = name;
         this.CNPJ = CNPJ;
         this.address = address;
