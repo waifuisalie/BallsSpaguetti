@@ -1,11 +1,8 @@
 package massa.inc;
 
-import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -139,9 +136,9 @@ public class CsvWriter {
     
         // Apply a 10% discount for supermarkets
         if (order.getCustomer().getClientType().equalsIgnoreCase("Supermarket")) {
+            System.out.print("discount got activated");
             totalPrice *= 0.9; // 10% discount
         }
-        System.out.println(totalPrice);
     
         return totalPrice;
     }

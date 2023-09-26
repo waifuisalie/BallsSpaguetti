@@ -14,8 +14,6 @@ public class Product {
     // Getter method for product name
     public String getPastaType() {
        
-        System.out.println(pastaType);
-        
         return pastaType;
     }
     
