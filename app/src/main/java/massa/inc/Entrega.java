@@ -39,6 +39,7 @@ public class Entrega {
         }
         return delivery_full_mass;
     }
+    /* 
     public String delivery_information() {
         String type; 
         if (customer instanceof Supermarket){
@@ -60,5 +61,5 @@ public class Entrega {
         delivery_details.append("Total Price: $").append(delivery_full_priceFormatted).append("\n\n");
     
         return delivery_details.toString();
-    }
+    }*/
 }

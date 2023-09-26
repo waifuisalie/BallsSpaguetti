@@ -52,9 +52,9 @@ public class CsvDataProcessor {
     // Method to create a customer based on client type
     private Customer createCustomer(String clientType, String name, String cnpj, String address) {
         if ("Supermercado".equals(clientType)) {
-            return new Supermarket(name, cnpj, address);
+            return new Supermarket(name, cnpj, address, clientType);
         } else if ("Restaurante".equals(clientType)) {
-            return new Restaurant(name, cnpj, address);
+            return new Restaurant(name, cnpj, address, clientType);
         }
         // Handle other client types if needed
         return null;

@@ -15,30 +15,25 @@ import java.io.FileWriter;
 
 public class Executavel {
     public static void main(String [] args) {
-        String csvFilePath = "/home/waifuisalie/Documents/FUCKFUCK/app/pedidosyeeey.csv";
-
-
-       CsvDataProcessor csvDataProcessor = new CsvDataProcessor(csvFilePath);
-
-       List<Customer> customers = csvDataProcessor.getCustomers();
-       List<Product> products = csvDataProcessor.getProducts();
-       List<Order> orders = csvDataProcessor.getOrders();
-       for (Order order : orders) {
-           /* 
-        System.out.println("Order ID: " + order.getId_number());
-        System.out.println("Customer: " + order.getCustomer().getName());
-        System.out.println("CNPJ: " + order.getCustomer().getCNPJ());
-        System.out.println("Endereço: " + order.getCustomer().getAddress());
-        System.out.println("Product: " + order.getType_of_pasta().getPastaType());
-        System.out.println("Amount: " + order.getAmount() + "kg");
-        System.out.println("\n");*/
-        }
-
+        int numberOfWeeks = 4;
         
-        // Assuming you have a list of production orders named "orders" and the current week number as "week"
-    
-    int week = 1; // Replace with the actual week number
-    CsvWriter.writeOrdersToCsv(orders, week);
+        for (int week = 1; week <= numberOfWeeks; week++) {
+            String csvFilePath = "/home/waifuisalie/Documents/FUCKFUCK/app/pedidosyeeey.csv";
+            // Load data for the current week
+            CsvDataProcessor csvDataProcessor = new CsvDataProcessor(csvFilePath);
+
+            List<Order> orders = csvDataProcessor.getOrders();
+
+            // Process orders for the current week
+            CsvWriter.writeOrdersToCsv(orders, week);
+
+            
+
+            // Write delivery orders for the current week
+            CsvWriter.writeDeliveriesToCsv(orders, week);
+
+            // You can add any other operations you need for each week here
+        }
 
         
     }

@@ -6,22 +6,28 @@ public class Order {
     // Attributes
     private int id_number;
     private Customer customer;
-    private Product type_of_pasta;
+    private Product product;
     private double amount;
     private String status;
     private Calendar orderDate;
 
 
     // Constructor method
-    public Order(int id_number, Customer customer, Product type_of_pasta, double amount) {
+    public Order(int id_number, Customer customer, Product product, double amount) {
         this.id_number = id_number;
         this.customer = customer;
-        this.type_of_pasta = type_of_pasta;
+        this.product = product;
         this.amount = amount;
         this.status = "";
         this.orderDate = Calendar.getInstance();
 
     }
+
+    public Product getType_of_pasta() {
+        return null;
+    }
+
+    
 
     public int getOrderWeek() {
         // Get the week number using the Calendar class
@@ -39,8 +45,8 @@ public class Order {
     }
 
     // Getter method for type of pasta (product)
-    public Product getType_of_pasta() {
-        return type_of_pasta;
+    public Product getProduct() {
+        return product;
     }
 
     // Getter method for order amount
@@ -59,7 +65,7 @@ public class Order {
     }
 
     public double item_value () {
-        double total = amount * type_of_pasta.kilogram_price();
+        double total = amount * product.kilogram_price();
         return total;
     }
 
@@ -67,7 +73,7 @@ public class Order {
         double total = amount;
         return total;
     }
-
+/* 
     public String order_information() {
         String type; 
         if (type_of_pasta instanceof Spaguetti){
@@ -100,10 +106,10 @@ public class Order {
         String order_details = "Order ID: " + id_number + "\n" + "Pasta type: " + type + "\n" +
         "Amount: " + amount + "kg" + "\n";
         return order_details;
-    }
+    }*/
 
     public double kilogram_price() {
-        return type_of_pasta.kilogram_price();
+        return product.kilogram_price();
     }
 }
 
