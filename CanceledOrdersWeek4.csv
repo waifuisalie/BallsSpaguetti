@@ -1,3 +1,8 @@
 Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-1,Kiko,0000.1200,Los Angeles,Canelone,1700.0,Supermercado
-5,Spaguetti Squares,6666.7787,Ponta GROSSA,Canelone,5000.0,Supermercado
+2,Casa Espanhola,1781.1111,Rua Rockefeller,Talharim,750.0,Restaurante
+3,Supermercado Ideal,2222.3733,Rua Padre Anchieta,Espaguete,7500.0,Supermercado
+4,Fusion Fusion,4444.5755,Rua Professor Brandão,Talharim,300.0,Restaurante
+6,Supermercado Essencial,7777.8188,Rua Mateus Grou,Canelone,894.0,Supermercado
+7,Aromas do Oriente,9999.0100,Rua Professor Rosa Saporski,Espaguete,10.0,Restaurante
+8,Terra Gastronômica,1234.4561,Rua Major Heitor Guimarães,Canelone,527.0,Restaurante
+9,Supermercado Supra,7894.4451,Rua Camões,Talharim,257.0,Restaurante

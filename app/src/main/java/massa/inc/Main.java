@@ -7,22 +7,18 @@ public class Main {
         int numberOfWeeks = 4;
 
         for (int week = 1; week <= numberOfWeeks; week++) {
-            // Load data for the current week
+            // Dados para a semana atual
             String csvFilePath = "/home/waifuisalie/Documents/FUCKFUCK/app/week" + week + ".csv";
-            CsvDataProcessor csvDataProcessor = new CsvDataProcessor(csvFilePath);
+            CsvDataProcessor csvDataProcessor = new CsvDataProcessor(csvFilePath, week);
 
             List<Order> orders = csvDataProcessor.getOrders();
 
-            // Process orders for the current week
+            // Escreve os pedidos
             CsvWriter.writeOrdersToCsv(orders, week);
 
-            // Create and write the cancelled orders for the current week
-
-            // Write delivery orders for the current week
+            // Escreve as entregas
             CsvWriter.writeDeliveriesToCsv(orders, week);
 
-            // You can add any other operations you need for each week here
         }
-    }
-    
+    }  
 }

@@ -1,4 +1,5 @@
 Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-4,Pikas PIzzas,4444.5555,Los Palos,Talharim,5000.0,Restaurante
-5,Spaguetti Balls,6666.7777,Ponta GROSSA,Canelone,5000.0,Supermercado
-7,Thiagos balls,9999.0000,PIKA GROSSA,Espaguete,1.0E7,Restaurante
+1,Atacado Assis,0000.0000,Rua XV de Novembro,Canelone,100.0,Supermercado
+5,Condor,6666.7777,Rua Comendador Araújo,Canelone,500.0,Supermercado
+6,Marcelo,7777.8888,Rua Marechal Deodoro,Canelone,3.0,Supermercado
+8,Sabor Saboroso,1234.4567,Rua João Negrão,Canelone,998.0,Restaurante

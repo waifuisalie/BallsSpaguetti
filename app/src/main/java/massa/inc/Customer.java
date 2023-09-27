@@ -4,7 +4,7 @@ public class Customer {
     private String name;
     private String CNPJ;
     private String address;
-    String clientType;
+    private String clientType;
 
     public Customer (String name, String CNPJ, String address, String clientType) {
         this.name = name;
@@ -17,14 +17,6 @@ public class Customer {
         return clientType;
     }
 
-    public String displayInformation() {
-        String details = "\n" + "Name: " + name + "\n"
-                       + "CNPJ: " + CNPJ + "\n" + "Address: " + address + "\n";
-        //System.out.print(details);
-        return details;
-    }
-
-    // Getters and setters (optional)
     public String getName() {
         return name;
     }

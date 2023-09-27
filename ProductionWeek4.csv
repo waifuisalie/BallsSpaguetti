@@ -1,8 +1,3 @@
 Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-2,MIlianos balls,1781.1111,USA California,Talharim,750.0,Restaurante
-3,Mamada Dada,2222.3733,Fila do SUS,Espaguete,750.0,Supermercado
-4,Pikas Arroz,4444.5755,Los Palos,Talharim,300.0,Restaurante
-6,eu quero amor,7777.8188,Amor,Canelone,894.0,Supermercado
-7,Thiagos revengs,9999.0100,mamada perigosa,Espaguete,1000.0,Restaurante
-8,Toma toma amor,1234.4561,FINIKA,Canelone,527.0,Restaurante
-9,amror?,7894.4451,porra amor,Talharim,257.0,Restaurante
+1,SuperMarket Central,0000.1200,Rua Jacarezinho,Canelone,17.0,Supermercado
+5,Ponto Econômico Supermercado,6666.7787,Avenida Paraná,Canelone,50.0,Supermercado

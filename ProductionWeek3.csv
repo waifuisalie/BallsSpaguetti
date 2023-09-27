@@ -1,9 +1,4 @@
 Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-2,Kika e KIKA,1111.1171,SUSHILANDIA,Talharim,550.0,Restaurante
-3,Big BALLLLS,2222.3733,Calça do Francisco,Espaguete,750.0,Supermercado
-4,Pikas MeatBallsd,4444.555,Los Santos,Talharim,50.0,Restaurante
-5,Spaguetti PIkas,6661.7777,Ponta FINISSIMA,Canelone,600.0,Supermercado
-6,quiero,7777.8188,Brasil GROSSo,Canelone,980.0,Supermercado
-7,Rafas balls,9949.0000,Mexico,Espaguete,400.0,Restaurante
-8,Toma pika toma,1234.7567,FINA Lambda,Canelone,688.0,Restaurante
-9,Suciideb,7894.4561,secso caralho,Talharim,256.0,Restaurante
+3,Supermercado Alfa,2222.3733,Rua Presidente Faria,Espaguete,750.0,Supermercado
+4,Bem Brasil Grill,4444.555,Rua Alferes Poli,Talharim,50.0,Restaurante
+7,Tandoori Delights,9949.0000,Rua Brigadeiro Franco,Espaguete,400.0,Restaurante

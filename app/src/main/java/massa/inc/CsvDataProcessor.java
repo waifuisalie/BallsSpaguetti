@@ -14,18 +14,18 @@ public class CsvDataProcessor {
     private List<Product> products;
     private List<Order> orders;
 
-    public CsvDataProcessor(String csvFilePath) {
+    public CsvDataProcessor(String csvFilePath, int week) {
         customers = new ArrayList<>();
         products = new ArrayList<>();
         orders = new ArrayList<>();
         
-        processCsvFile(csvFilePath);
+        processCsvFile(csvFilePath, week);
     }
 
-    private void processCsvFile(String csvFilePath) {
+    private void processCsvFile(String csvFilePath, int week) {
         try (FileReader fileReader = new FileReader(csvFilePath);
              CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader)) {
-                int orderId = 1; // Initialize the order ID counter
+                int orderId = 1; // Inicializa id do pedido
 
             for (CSVRecord record : csvParser) {
                 String clientName = record.get("Nome do Cliente");
@@ -35,12 +35,12 @@ public class CsvDataProcessor {
                 String pastaType = record.get("Tipo da Massa");
                 double quantity = Double.parseDouble(record.get("QTD MASSA"));
 
-                // Dynamically create customer and product instances based on CSV data
+                // Dinamicamente cria as instâncias de cliente e produto
                 Customer customer = createCustomer(clientType, clientName, cnpj, address);
                 Product product = createProduct(pastaType);
 
-                // Create an order based on the CSV data
-                Order order = new Order(orderId, customer, product, quantity);
+                // Cria a ordem de pedido
+                Order order = new Order(orderId, customer, product, quantity, week);
                 orders.add(order);
                 orderId++;
             }
@@ -49,24 +49,20 @@ public class CsvDataProcessor {
         }
     }
 
-    // Method to create a customer based on client type
+    // Método que cria cliente baseado se é supermercado ou restaurante
     private Customer createCustomer(String clientType, String name, String cnpj, String address) {
         if ("Supermercado".equals(clientType)) {
             return new Supermarket(name, cnpj, address, clientType);
         } else if ("Restaurante".equals(clientType)) {
             return new Restaurant(name, cnpj, address, clientType);
+        } else {
+            return null;
         }
-        // Handle other client types if needed
-        return null;
     }
 
-    // Method to create a product based on pasta type
+    // Método que cria produto baseado que tipo de produto que é
     private Product createProduct(String pastaType) {
-        // Fetch actual price and production data based on pasta type
-        double kilogramPrice = 0; // Fetch actual price
-        double maxProduction = 0; // Fetch actual max production
-        
-        return new Product(pastaType, kilogramPrice, maxProduction);
+        return new Product(pastaType);
     }
 
     public List<Customer> getCustomers() {

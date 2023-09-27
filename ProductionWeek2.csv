@@ -1,10 +1,3 @@
 Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-1,Me mata,0450.0890,Cuckland,Talharim,180.0,Supermercado
-2,1 de Outubro,1781.1711,Los Pampas,Talharim,700.0,Restaurante
-3,Big Cucks,2922.3373,Mamalandia,Espaguete,300.0,Supermercado
-4,Pikas Lasanhas,4544.5785,Morro do Alemão,Talharim,500.0,Restaurante
-5,Spaguetti COCKS,6786.7967,Ponta FINA,Canelone,500.0,Supermercado
-6,SECSU,7527.8968,JAPALANDIA,Canelone,1000.0,Supermercado
-7,Thiagos Cocks,9999.0110,PIKA MUITA FINA,Espaguete,100.0,Restaurante
-8,Toma toma la da ca,1285.7867,FINA PIKA GROSSA,Canelone,980.0,Restaurante
-9,Me matar?,4594.4781,porra PIKAS,Talharim,528.0,Restaurante
+3,Supermercado MegaCompra,2922.3373,Rua Trajano Reis,Espaguete,300.0,Supermercado
+7,Mar & Montanha,9999.0110,Avenida Marechal Floriano Peixoto,Espaguete,100.0,Restaurante
