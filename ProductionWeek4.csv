@@ -1,1 +1,6 @@
 ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente
+1,SuperMarket Central,0000.1200,Rua Jacarezinho,Canelone,17.0,Supermercado
+2,Casa Espanhola,1781.1111,Rua Rockefeller,Talharim,750.0,Restaurante
+5,Ponto Econômico Supermercado,6666.7787,Avenida Paraná,Canelone,50.0,Supermercado
+6,Supermercado Essencial,7777.8188,Rua Mateus Grou,Canelone,894.0,Supermercado
+8,Terra Gastronômica,1234.4561,Rua Major Heitor Guimarães,Canelone,527.0,Restaurante

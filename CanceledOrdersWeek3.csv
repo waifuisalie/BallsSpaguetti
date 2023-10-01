@@ -1,10 +1,4 @@
 ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente
-1,SuperMarket Central,0000.0001,Rua Francisco Rocha,Canelone,1500.0,Supermercado
-2,Ristorante Bella Vita,1111.1171,Avenida República Argentina,Talharim,550.0,Restaurante
-3,Supermercado Alfa,2222.3733,Rua Presidente Faria,Espaguete,750.0,Supermercado
-4,Bem Brasil Grill,4444.555,Rua Alferes Poli,Talharim,50.0,Restaurante
 5,MegaDesconto Supermercado,6661.7777,Rua Chile,Canelone,600.0,Supermercado
 6,SuperMercado Excelência,7777.8188,Rua Mateus Leme,Canelone,980.0,Supermercado
-7,Tandoori Delights,9949.0000,Rua Brigadeiro Franco,Espaguete,400.0,Restaurante
 8,Delícias Tailandesas,1234.7567,Rua Simão Bolívar,Canelone,688.0,Restaurante
-9,Trattoria La Famiglia,7894.4561,Rua Dr. Faivre,Talharim,256.0,Restaurante

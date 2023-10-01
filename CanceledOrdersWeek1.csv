@@ -1,10 +1,4 @@
 ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente
-1,Atacado Assis,0000.0000,Rua XV de Novembro,Canelone,100.0,Supermercado
-2,Dona Conceição,1111.1111,Rua das Flores,Talharim,250.0,Restaurante
-3,Big,2222.3333,Rua 24 Horas,Espaguete,700.0,Supermercado
-4,Pizza Hut,4444.5555,Avenida Cândido de Abreu,Talharim,50.0,Restaurante
-5,Condor,6666.7777,Rua Comendador Araújo,Canelone,500.0,Supermercado
-6,Marcelo,7777.8888,Rua Marechal Deodoro,Canelone,3.0,Supermercado
-7,Di Casa,9999.0000,Rua Visconde do Rio Branco,Espaguete,1.0,Restaurante
+7,Di Casa,9999.0000,Rua Visconde do Rio Branco,Espaguete,500.1,Restaurante
 8,Sabor Saboroso,1234.4567,Rua João Negrão,Canelone,998.0,Restaurante
-9,Madalosso,7894.4561,Rua Augusto Stresser,Talharim,256.0,Restaurante
+9,Madalosso,7894.4561,Rua Augusto Stresser,Talharim,850.0,Restaurante

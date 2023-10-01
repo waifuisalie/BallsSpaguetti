@@ -1,1 +1,7 @@
 ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente
+1,Atacado Assis,0000.0000,Rua XV de Novembro,Canelone,100.0,Supermercado
+2,Dona Conceição,1111.1111,Rua das Flores,Talharim,250.0,Restaurante
+3,Big,2222.3333,Rua 24 Horas,Espaguete,1500.0,Supermercado
+4,Pizza Hut,4444.5555,Avenida Cândido de Abreu,Talharim,600.0,Restaurante
+5,Condor,6666.7777,Rua Comendador Araújo,Canelone,500.0,Supermercado
+6,Marcelo,7777.8888,Rua Marechal Deodoro,Canelone,3.0,Supermercado

@@ -1,1 +1,7 @@
 ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente
+1,La Gourmandise,0450.0890,Rua Ébano Pereira,Talharim,180.0,Supermercado
+2,Bistrô de Paris,1781.1711,Avenida Sete de Setembro,Talharim,700.0,Restaurante
+3,Supermercado MegaCompra,2922.3373,Rua Trajano Reis,Espaguete,300.0,Supermercado
+5,Supermercado MegaCompra,6786.7967,Rua São Francisco,Canelone,500.0,Supermercado
+6,EconoMart,7527.8968,Rua Barão do Rio Branco,Canelone,1000.0,Supermercado
+7,Mar & Montanha,9999.0110,Avenida Marechal Floriano Peixoto,Espaguete,100.0,Restaurante

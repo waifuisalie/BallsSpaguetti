@@ -17,27 +17,13 @@ public class CsvWriter {
         try (FileWriter productionFileWriter = new FileWriter(productionFileName);
              CSVPrinter productionCsvPrinter = new CSVPrinter(productionFileWriter, CSVFormat.DEFAULT.withHeader(
                      "ID do Pedido", "Nome do Cliente", "CNPJ", "Endereço", "Produto", "Quantidade (kg)", "Tipo de Cliente"
-             ));
-             FileWriter canceledFileWriter = new FileWriter(canceledFileName);
-             CSVPrinter canceledCsvPrinter = new CSVPrinter(canceledFileWriter, CSVFormat.DEFAULT.withHeader(
-                     "ID do Pedido", "Nome do Cliente", "CNPJ", "Endereço", "Produto", "Quantidade (kg)", "Tipo de Cliente"
              ))) {
 
+            shouldOrderBeCanceled(week, orders, canceledFileName);
             for (Order order : orders) {
                 // Verifica se o pedido deve ser cancelado com base na função shouldOrderBeCanceled
-                if (shouldOrderBeCanceled(order, week, orders)) {
-                    order.setStatus("Cancelado");
-                    // Escreve no arquivo CSV de pedidos cancelados
-                    canceledCsvPrinter.printRecord(
-                            order.getId_number(),
-                            order.getCustomer().getName(),
-                            order.getCustomer().getCNPJ(),
-                            order.getCustomer().getAddress(),
-                            order.getProduct().getPastaType(),
-                            order.getAmount(),
-                            order.getCustomer().getClientType()
-                    );
-                } else {
+            
+                if (!"Cancelado".equals(order.getStatus())){
                     // Escreve no arquivo CSV de pedidos de produção
                     productionCsvPrinter.printRecord(
                             order.getId_number(),
@@ -59,35 +45,94 @@ public class CsvWriter {
         }
     }
 
-    public static boolean shouldOrderBeCanceled(Order order, int week, List<Order> orders) {
-        // inicializa as quantidades
-        double quantidadeCumulativaSpaguetti = 0;
-        double quantidadeCumulativaCanelone = 0;
-        double quantidadeCumulativaTalharim = 0;
+    public static void shouldOrderBeCanceled(int week, List<Order> orders, String canceledFileName) {
+        
+        try (FileWriter canceledFileWriter = new FileWriter(canceledFileName);
+        CSVPrinter canceledCsvPrinter = new CSVPrinter(canceledFileWriter, CSVFormat.DEFAULT.withHeader(
+            "ID do Pedido", "Nome do Cliente", "CNPJ", "Endereço", "Produto", "Quantidade (kg)", "Tipo de Cliente"
+            ))) {
+                 // inicializa as quantidades
+                 double quantidadeCumulativaSpaguetti = 0;
+                 double quantidadeCumulativaCanelone = 0;
+                 double quantidadeCumulativaTalharim = 0;
+                for (Order pedidoExistente : orders) {
+                    if (isSameWeek(pedidoExistente, week)) {
+                        if ("Espaguete".equals(pedidoExistente.getProduct().getPastaType())) {
+                            System.out.print("WE ARE INSIDE SPAGUETTI\n");
+                            System.out.println("BEFORE qtd spaguetti: " + quantidadeCumulativaSpaguetti + " : " + pedidoExistente.getCustomer().getName() + "\n");
+                            quantidadeCumulativaSpaguetti += pedidoExistente.getAmount();
+                            System.out.println("qtd spaguetti: " + quantidadeCumulativaSpaguetti + " : " + pedidoExistente.getCustomer().getName() + "\n");
+                            System.out.println(pedidoExistente.getAmount() + "\n");
+                            System.out.println(quantidadeCumulativaSpaguetti + pedidoExistente.getAmount() + "\n");
+                            
+                            // condition to print order that exceeds
+                            if ((quantidadeCumulativaSpaguetti) > 2000) {
+                                pedidoExistente.setStatus("Cancelado");
+                                System.out.println("[ * ]" + "Order: " + pedidoExistente.getCustomer().getName() + " type: " + pedidoExistente.getProduct().getPastaType() + " got cancelled" +"\n");
+                                // Escreve no arquivo CSV de pedidos cancelados
+                                canceledCsvPrinter.printRecord(
+                                        pedidoExistente.getId_number(),
+                                        pedidoExistente.getCustomer().getName(),
+                                        pedidoExistente.getCustomer().getCNPJ(),
+                                        pedidoExistente.getCustomer().getAddress(),
+                                        pedidoExistente.getProduct().getPastaType(),
+                                        pedidoExistente.getAmount(),
+                                        pedidoExistente.getCustomer().getClientType()
+                                        );
+                                    }
+                                } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
+                                    System.out.print("WE ARE INSIDE CANELONE\n");
+                                    quantidadeCumulativaCanelone += pedidoExistente.getAmount();
+                                System.out.println("qtd canelone: " + quantidadeCumulativaCanelone + " : " + pedidoExistente.getCustomer().getName() + "\n");
+
+         
+                            //condition to print order that exceeds
+                            if ((quantidadeCumulativaCanelone) > 1600) {
+                                pedidoExistente.setStatus("Cancelado");
+                                System.out.println("[ * ]" + "Order: " + pedidoExistente.getCustomer().getName() + " type: " + pedidoExistente.getProduct().getPastaType() + " got cancelled" + "\n");
+                                // Escreve no arquivo CSV de pedidos cancelados
+                                canceledCsvPrinter.printRecord(
+                                    pedidoExistente.getId_number(),
+                                    pedidoExistente.getCustomer().getName(),
+                                    pedidoExistente.getCustomer().getCNPJ(),
+                                        pedidoExistente.getCustomer().getAddress(),
+                                        pedidoExistente.getProduct().getPastaType(),
+                                        pedidoExistente.getAmount(),
+                                        pedidoExistente.getCustomer().getClientType()
+                                );
+                             }
+                            } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
+                                System.out.print("WE ARE INSIDE TALHARIM\n");
+                                quantidadeCumulativaTalharim += pedidoExistente.getAmount();
+                                System.out.println("qtd Talharim: " + quantidadeCumulativaTalharim + " : " + pedidoExistente.getCustomer().getName() + "\n");
+
+                            //condition to print order that exceeds
+                            if ((quantidadeCumulativaTalharim) > 1000) {
+                                pedidoExistente.setStatus("Cancelado");
+                                System.out.println("[ * ]" + "Order: " + pedidoExistente.getCustomer().getName() + " type: " + pedidoExistente.getProduct().getPastaType() + " got cancelled" + "\n");
+                                // Escreve no arquivo CSV de pedidos cancelados
+                                canceledCsvPrinter.printRecord(
+                                        pedidoExistente.getId_number(),
+                                        pedidoExistente.getCustomer().getName(),
+                                        pedidoExistente.getCustomer().getCNPJ(),
+                                        pedidoExistente.getCustomer().getAddress(),
+                                        pedidoExistente.getProduct().getPastaType(),
+                                        pedidoExistente.getAmount(),
+                                        pedidoExistente.getCustomer().getClientType()
+                                );
+                            }
+                        }
+                    }
+                }
+            
+        } catch (Exception e) {
+            System.err.println("Erro ao escrever pedidos nos arquivos CSV: " + e.getMessage());
+        }
+
+
+
 
         // Calcula as quantidades cumulativas para cada tipo de massa
-        for (Order pedidoExistente : orders) {
-            if (isSameWeek(pedidoExistente, week)) {
-                if ("Espaguete".equals(pedidoExistente.getProduct().getPastaType())) {
-                    quantidadeCumulativaSpaguetti += pedidoExistente.getAmount();
-                } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
-                    quantidadeCumulativaCanelone += pedidoExistente.getAmount();
-                    System.out.println("qtd cumulatica Canelone:" + quantidadeCumulativaCanelone);
-                } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
-                    quantidadeCumulativaTalharim += pedidoExistente.getAmount();
-                }
-            }
-        }
-        
-        // Verifica se o pedido atual deve ser cancelado com base nos limites cumulativos
-        if ((quantidadeCumulativaSpaguetti + order.getAmount())> 2000) {
-            return true; // o pedido deve ser cancelado
-        } else if ((quantidadeCumulativaCanelone + order.getAmount()) > 1600) {
-            return true; // o pedido deve ser cancelado
-        } else if ((quantidadeCumulativaTalharim + order.getAmount()) > 1000) {
-            return true; // o pedido deve ser cancelado
-        }
-        return false; // o pedido não deve ser cancelado
 }
         
     

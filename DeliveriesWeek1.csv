@@ -1,1 +1,7 @@
 Tipo de Cliente,Nome do Cliente,CNPJ,Endereço,Quantidade Total (kg),Preço
+Supermercado,Atacado Assis,0000.0000,Rua XV de Novembro,100.0,1800.0
+Restaurante,Dona Conceição,1111.1111,Rua das Flores,250.0,3000.0
+Supermercado,Big,2222.3333,Rua 24 Horas,1500.0,13500.0
+Restaurante,Pizza Hut,4444.5555,Avenida Cândido de Abreu,600.0,7200.0
+Supermercado,Condor,6666.7777,Rua Comendador Araújo,500.0,9000.0
+Supermercado,Marcelo,7777.8888,Rua Marechal Deodoro,3.0,54.0
