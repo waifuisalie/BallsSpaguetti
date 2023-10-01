@@ -1,4 +1,1 @@
-Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-3,Supermercado Alfa,2222.3733,Rua Presidente Faria,Espaguete,750.0,Supermercado
-4,Bem Brasil Grill,4444.555,Rua Alferes Poli,Talharim,50.0,Restaurante
-7,Tandoori Delights,9949.0000,Rua Brigadeiro Franco,Espaguete,400.0,Restaurante
+ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente

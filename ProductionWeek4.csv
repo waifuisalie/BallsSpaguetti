@@ -1,3 +1,1 @@
-Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-1,SuperMarket Central,0000.1200,Rua Jacarezinho,Canelone,17.0,Supermercado
-5,Ponto Econômico Supermercado,6666.7787,Avenida Paraná,Canelone,50.0,Supermercado
+ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente

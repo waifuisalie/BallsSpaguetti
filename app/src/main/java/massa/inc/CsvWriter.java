@@ -60,6 +60,7 @@ public class CsvWriter {
     }
 
     public static boolean shouldOrderBeCanceled(Order order, int week, List<Order> orders) {
+        // inicializa as quantidades
         double quantidadeCumulativaSpaguetti = 0;
         double quantidadeCumulativaCanelone = 0;
         double quantidadeCumulativaTalharim = 0;
@@ -71,6 +72,7 @@ public class CsvWriter {
                     quantidadeCumulativaSpaguetti += pedidoExistente.getAmount();
                 } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
                     quantidadeCumulativaCanelone += pedidoExistente.getAmount();
+                    System.out.println("qtd cumulatica Canelone:" + quantidadeCumulativaCanelone);
                 } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
                     quantidadeCumulativaTalharim += pedidoExistente.getAmount();
                 }
@@ -78,18 +80,21 @@ public class CsvWriter {
         }
         
         // Verifica se o pedido atual deve ser cancelado com base nos limites cumulativos
-        if (("Espaguete".equals(order.getProduct().getPastaType()) && (quantidadeCumulativaSpaguetti + order.getAmount()) > 2000)
-                || ("Canelone".equals(order.getProduct().getPastaType()) && (quantidadeCumulativaCanelone + order.getAmount()) > 1600)
-                || ("Talharim".equals(order.getProduct().getPastaType()) && (quantidadeCumulativaTalharim + order.getAmount()) > 1000)) {
-            return true; // O pedido deve ser cancelado
+        if ((quantidadeCumulativaSpaguetti + order.getAmount())> 2000) {
+            return true; // o pedido deve ser cancelado
+        } else if ((quantidadeCumulativaCanelone + order.getAmount()) > 1600) {
+            return true; // o pedido deve ser cancelado
+        } else if ((quantidadeCumulativaTalharim + order.getAmount()) > 1000) {
+            return true; // o pedido deve ser cancelado
         }
+        return false; // o pedido não deve ser cancelado
+}
+        
     
-        return false; // O pedido não deve ser cancelado
-    }
 
 public static void writeDeliveriesToCsv(List<Order> orders, int week) {
     // Define o nome do arquivo CSV de entregas com base na semana
-    String fileName = "EntregasSemana" + week + ".csv";
+    String fileName = "DeliveriesWeek" + week + ".csv";
 
     try (FileWriter fileWriter = new FileWriter(fileName);
          CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(
@@ -115,9 +120,7 @@ public static void writeDeliveriesToCsv(List<Order> orders, int week) {
                 );
             }
         }
-
         System.out.println("[ + ] " + fileName);
-
     } catch (IOException e) {
         System.err.println("Erro ao escrever pedidos não cancelados no arquivo CSV: " + e.getMessage());
     }

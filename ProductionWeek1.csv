@@ -1,6 +1,1 @@
-Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-2,Dona Conceição,1111.1111,Rua das Flores,Talharim,250.0,Restaurante
-3,Big,2222.3333,Rua 24 Horas,Espaguete,700.0,Supermercado
-4,Pizza Hut,4444.5555,Avenida Cândido de Abreu,Talharim,50.0,Restaurante
-7,Di Casa,9999.0000,Rua Visconde do Rio Branco,Espaguete,1.0,Restaurante
-9,Madalosso,7894.4561,Rua Augusto Stresser,Talharim,256.0,Restaurante
+ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente

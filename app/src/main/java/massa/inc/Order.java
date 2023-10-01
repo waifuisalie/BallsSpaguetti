@@ -2,7 +2,6 @@ package massa.inc;
 
 
 public class Order {
-    // Attributes
     private int id_number;
     private Customer customer;
     private Product product;

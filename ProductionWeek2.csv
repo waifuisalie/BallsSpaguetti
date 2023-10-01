@@ -1,3 +1,1 @@
-Order ID,Customer Name,CNPJ,Address,Product,Amount (kg),Client Type
-3,Supermercado MegaCompra,2922.3373,Rua Trajano Reis,Espaguete,300.0,Supermercado
-7,Mar & Montanha,9999.0110,Avenida Marechal Floriano Peixoto,Espaguete,100.0,Restaurante
+ID do Pedido,Nome do Cliente,CNPJ,Endereço,Produto,Quantidade (kg),Tipo de Cliente
