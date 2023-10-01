@@ -1,6 +1,5 @@
 Tipo de Cliente,Nome do Cliente,CNPJ,Endereço,Quantidade Total (kg),Preço
-Supermercado,SuperMarket Central,0000.1200,Rua Jacarezinho,17.0,306.0
+Supermercado,SuperMarket Central,0000.1200,Rua Jacarezinho,250.0,4500.0
 Restaurante,Casa Espanhola,1781.1111,Rua Rockefeller,750.0,9000.0
-Supermercado,Ponto Econômico Supermercado,6666.7787,Avenida Paraná,50.0,900.0
 Supermercado,Supermercado Essencial,7777.8188,Rua Mateus Grou,894.0,16092.0
-Restaurante,Terra Gastronômica,1234.4561,Rua Major Heitor Guimarães,527.0,10540.0
+Restaurante,Aromas do Oriente,9999.0100,Rua Professor Rosa Saporski,10.0,100.0

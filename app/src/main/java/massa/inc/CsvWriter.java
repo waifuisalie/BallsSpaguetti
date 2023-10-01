@@ -47,24 +47,18 @@ public class CsvWriter {
 
     public static void shouldOrderBeCanceled(int week, List<Order> orders, String canceledFileName) {
         
+        // inicializa as quantidades
+        double quantidadeCumulativaSpaguetti = 0;
+        double quantidadeCumulativaCanelone = 0;
+        double quantidadeCumulativaTalharim = 0;
         try (FileWriter canceledFileWriter = new FileWriter(canceledFileName);
         CSVPrinter canceledCsvPrinter = new CSVPrinter(canceledFileWriter, CSVFormat.DEFAULT.withHeader(
             "ID do Pedido", "Nome do Cliente", "CNPJ", "Endereço", "Produto", "Quantidade (kg)", "Tipo de Cliente"
             ))) {
-                 // inicializa as quantidades
-                 double quantidadeCumulativaSpaguetti = 0;
-                 double quantidadeCumulativaCanelone = 0;
-                 double quantidadeCumulativaTalharim = 0;
                 for (Order pedidoExistente : orders) {
                     if (isSameWeek(pedidoExistente, week)) {
                         if ("Espaguete".equals(pedidoExistente.getProduct().getPastaType())) {
-                            System.out.print("WE ARE INSIDE SPAGUETTI\n");
-                            System.out.println("BEFORE qtd spaguetti: " + quantidadeCumulativaSpaguetti + " : " + pedidoExistente.getCustomer().getName() + "\n");
                             quantidadeCumulativaSpaguetti += pedidoExistente.getAmount();
-                            System.out.println("qtd spaguetti: " + quantidadeCumulativaSpaguetti + " : " + pedidoExistente.getCustomer().getName() + "\n");
-                            System.out.println(pedidoExistente.getAmount() + "\n");
-                            System.out.println(quantidadeCumulativaSpaguetti + pedidoExistente.getAmount() + "\n");
-                            
                             // condition to print order that exceeds
                             if ((quantidadeCumulativaSpaguetti) > 2000) {
                                 pedidoExistente.setStatus("Cancelado");
@@ -79,11 +73,10 @@ public class CsvWriter {
                                         pedidoExistente.getAmount(),
                                         pedidoExistente.getCustomer().getClientType()
                                         );
+                                quantidadeCumulativaSpaguetti = quantidadeCumulativaSpaguetti - pedidoExistente.getAmount();
                                     }
                                 } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
-                                    System.out.print("WE ARE INSIDE CANELONE\n");
                                     quantidadeCumulativaCanelone += pedidoExistente.getAmount();
-                                System.out.println("qtd canelone: " + quantidadeCumulativaCanelone + " : " + pedidoExistente.getCustomer().getName() + "\n");
 
          
                             //condition to print order that exceeds
@@ -95,16 +88,15 @@ public class CsvWriter {
                                     pedidoExistente.getId_number(),
                                     pedidoExistente.getCustomer().getName(),
                                     pedidoExistente.getCustomer().getCNPJ(),
-                                        pedidoExistente.getCustomer().getAddress(),
-                                        pedidoExistente.getProduct().getPastaType(),
-                                        pedidoExistente.getAmount(),
-                                        pedidoExistente.getCustomer().getClientType()
+                                    pedidoExistente.getCustomer().getAddress(),
+                                    pedidoExistente.getProduct().getPastaType(),
+                                    pedidoExistente.getAmount(),
+                                    pedidoExistente.getCustomer().getClientType()
                                 );
+                                quantidadeCumulativaCanelone = quantidadeCumulativaCanelone - pedidoExistente.getAmount();
                              }
                             } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
-                                System.out.print("WE ARE INSIDE TALHARIM\n");
                                 quantidadeCumulativaTalharim += pedidoExistente.getAmount();
-                                System.out.println("qtd Talharim: " + quantidadeCumulativaTalharim + " : " + pedidoExistente.getCustomer().getName() + "\n");
 
                             //condition to print order that exceeds
                             if ((quantidadeCumulativaTalharim) > 1000) {
@@ -120,6 +112,7 @@ public class CsvWriter {
                                         pedidoExistente.getAmount(),
                                         pedidoExistente.getCustomer().getClientType()
                                 );
+                                quantidadeCumulativaTalharim = quantidadeCumulativaTalharim - pedidoExistente.getAmount();
                             }
                         }
                     }
@@ -132,10 +125,8 @@ public class CsvWriter {
 
 
 
-        // Calcula as quantidades cumulativas para cada tipo de massa
 }
-        
-    
+   
 
 public static void writeDeliveriesToCsv(List<Order> orders, int week) {
     // Define o nome do arquivo CSV de entregas com base na semana
