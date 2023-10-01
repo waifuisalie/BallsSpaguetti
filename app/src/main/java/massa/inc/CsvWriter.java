@@ -18,7 +18,8 @@ public class CsvWriter {
              CSVPrinter productionCsvPrinter = new CSVPrinter(productionFileWriter, CSVFormat.DEFAULT.withHeader(
                      "ID do Pedido", "Nome do Cliente", "CNPJ", "Endereço", "Produto", "Quantidade (kg)", "Tipo de Cliente"
              ))) {
-
+            
+            // verifica se a ordem deve ser cancelada
             shouldOrderBeCanceled(week, orders, canceledFileName);
             for (Order order : orders) {
                 // Verifica se o pedido deve ser cancelado com base na função shouldOrderBeCanceled
@@ -36,7 +37,7 @@ public class CsvWriter {
                     );
                 }
             }
-
+            // sinaliza que arquivos foram criados com sucesso
             System.out.println("[ + ] " + productionFileName);
             System.out.println("[ + ] " + canceledFileName);
 
@@ -46,23 +47,29 @@ public class CsvWriter {
     }
 
     public static void shouldOrderBeCanceled(int week, List<Order> orders, String canceledFileName) {
-        
         // inicializa as quantidades
         double quantidadeCumulativaSpaguetti = 0;
         double quantidadeCumulativaCanelone = 0;
         double quantidadeCumulativaTalharim = 0;
+
         try (FileWriter canceledFileWriter = new FileWriter(canceledFileName);
         CSVPrinter canceledCsvPrinter = new CSVPrinter(canceledFileWriter, CSVFormat.DEFAULT.withHeader(
             "ID do Pedido", "Nome do Cliente", "CNPJ", "Endereço", "Produto", "Quantidade (kg)", "Tipo de Cliente"
             ))) {
+                // itera pelas ordens
                 for (Order pedidoExistente : orders) {
+
+                    // verifica que de fato está na semana condizente 
                     if (isSameWeek(pedidoExistente, week)) {
+
+                        // verifica Espaguete
                         if ("Espaguete".equals(pedidoExistente.getProduct().getPastaType())) {
                             quantidadeCumulativaSpaguetti += pedidoExistente.getAmount();
-                            // condition to print order that exceeds
+
+                            // condição para excrever ordem que exceder a qtd limite
                             if ((quantidadeCumulativaSpaguetti) > 2000) {
-                                pedidoExistente.setStatus("Cancelado");
-                                System.out.println("[ * ]" + "Order: " + pedidoExistente.getCustomer().getName() + " type: " + pedidoExistente.getProduct().getPastaType() + " got cancelled" +"\n");
+                                pedidoExistente.setStatus("Cancelado"); // coloca o status da ordem como cancelado
+
                                 // Escreve no arquivo CSV de pedidos cancelados
                                 canceledCsvPrinter.printRecord(
                                         pedidoExistente.getId_number(),
@@ -73,37 +80,20 @@ public class CsvWriter {
                                         pedidoExistente.getAmount(),
                                         pedidoExistente.getCustomer().getClientType()
                                         );
+                                // retira da contagem acumulativa de quantidade a ordem cancelada
                                 quantidadeCumulativaSpaguetti = quantidadeCumulativaSpaguetti - pedidoExistente.getAmount();
-                                    }
-                                } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
-                                    quantidadeCumulativaCanelone += pedidoExistente.getAmount();
+                            }
 
-         
-                            //condition to print order that exceeds
-                            if ((quantidadeCumulativaCanelone) > 1600) {
-                                pedidoExistente.setStatus("Cancelado");
-                                System.out.println("[ * ]" + "Order: " + pedidoExistente.getCustomer().getName() + " type: " + pedidoExistente.getProduct().getPastaType() + " got cancelled" + "\n");
-                                // Escreve no arquivo CSV de pedidos cancelados
-                                canceledCsvPrinter.printRecord(
-                                    pedidoExistente.getId_number(),
-                                    pedidoExistente.getCustomer().getName(),
-                                    pedidoExistente.getCustomer().getCNPJ(),
-                                    pedidoExistente.getCustomer().getAddress(),
-                                    pedidoExistente.getProduct().getPastaType(),
-                                    pedidoExistente.getAmount(),
-                                    pedidoExistente.getCustomer().getClientType()
-                                );
-                                quantidadeCumulativaCanelone = quantidadeCumulativaCanelone - pedidoExistente.getAmount();
-                             }
-                            } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
-                                quantidadeCumulativaTalharim += pedidoExistente.getAmount();
+                            // verifica Canelone
+                            } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
+                                 quantidadeCumulativaCanelone += pedidoExistente.getAmount();
 
-                            //condition to print order that exceeds
-                            if ((quantidadeCumulativaTalharim) > 1000) {
-                                pedidoExistente.setStatus("Cancelado");
-                                System.out.println("[ * ]" + "Order: " + pedidoExistente.getCustomer().getName() + " type: " + pedidoExistente.getProduct().getPastaType() + " got cancelled" + "\n");
-                                // Escreve no arquivo CSV de pedidos cancelados
-                                canceledCsvPrinter.printRecord(
+                                // condição para excrever ordem que exceder a qtd limite
+                                if ((quantidadeCumulativaCanelone) > 1600) {
+                                    pedidoExistente.setStatus("Cancelado"); // coloca o status da ordem como cancelado
+
+                                    // Escreve no arquivo CSV de pedidos cancelados
+                                    canceledCsvPrinter.printRecord(
                                         pedidoExistente.getId_number(),
                                         pedidoExistente.getCustomer().getName(),
                                         pedidoExistente.getCustomer().getCNPJ(),
@@ -111,20 +101,39 @@ public class CsvWriter {
                                         pedidoExistente.getProduct().getPastaType(),
                                         pedidoExistente.getAmount(),
                                         pedidoExistente.getCustomer().getClientType()
-                                );
-                                quantidadeCumulativaTalharim = quantidadeCumulativaTalharim - pedidoExistente.getAmount();
+                                    );
+                                    // retira da contagem acumulativa de quantidade a ordem cancelada
+                                    quantidadeCumulativaCanelone = quantidadeCumulativaCanelone - pedidoExistente.getAmount();
+                                }
+
+                            // verifica Talharim
+                            } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
+                                quantidadeCumulativaTalharim += pedidoExistente.getAmount();
+
+                                // condição para excrever ordem que exceder a qtd limite
+                                if ((quantidadeCumulativaTalharim) > 1000) {
+                                    pedidoExistente.setStatus("Cancelado"); // coloca o status do pedido como cancelado
+
+                                    // Escreve no arquivo CSV de pedidos cancelados
+                                    canceledCsvPrinter.printRecord(
+                                            pedidoExistente.getId_number(),
+                                            pedidoExistente.getCustomer().getName(),
+                                            pedidoExistente.getCustomer().getCNPJ(),
+                                            pedidoExistente.getCustomer().getAddress(),
+                                            pedidoExistente.getProduct().getPastaType(),
+                                            pedidoExistente.getAmount(),
+                                            pedidoExistente.getCustomer().getClientType()
+                                    );
+                                    // retira da contagem acumulativa de quantidade a ordem cancelada
+                                    quantidadeCumulativaTalharim = quantidadeCumulativaTalharim - pedidoExistente.getAmount();
+                                }
                             }
                         }
                     }
-                }
             
         } catch (Exception e) {
             System.err.println("Erro ao escrever pedidos nos arquivos CSV: " + e.getMessage());
         }
-
-
-
-
 }
    
 
@@ -138,8 +147,10 @@ public static void writeDeliveriesToCsv(List<Order> orders, int week) {
          ))) {
         // Itera sobre a lista de pedidos
         for (Order order : orders) {
+
             // Verifica se o pedido não está cancelado
             if (!order.getStatus().equals("Cancelado")) {
+
                 // Obtém o tipo de cliente, quantidade total e preço do pedido
                 String clientType = order.getCustomer().getClientType();
                 double totalAmount = order.getAmount();
@@ -156,6 +167,7 @@ public static void writeDeliveriesToCsv(List<Order> orders, int week) {
                 );
             }
         }
+        // sinaliza que o arquivo foi criado com sucesso
         System.out.println("[ + ] " + fileName);
     } catch (IOException e) {
         System.err.println("Erro ao escrever pedidos não cancelados no arquivo CSV: " + e.getMessage());
@@ -181,7 +193,6 @@ private static double calculatePrice(Order order) {
 
     // Aplica um desconto de 10% para supermercados
     if (order.getCustomer().getClientType().equalsIgnoreCase("Supermercado")) {
-        System.out.print("desconto ativado");
         totalPrice *= 0.9; 
     }
 
