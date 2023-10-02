@@ -66,7 +66,7 @@ public class CsvWriter {
                         if ("Espaguete".equals(pedidoExistente.getProduct().getPastaType())) {
                             quantidadeCumulativaSpaguetti += pedidoExistente.getAmount();
 
-                            // condição para excrever ordem que exceder a qtd limite
+                            // condição para escrever ordem que exceder a qtd limite
                             if ((quantidadeCumulativaSpaguetti) > 2000) {
                                 pedidoExistente.setStatus("Cancelado"); // coloca o status da ordem como cancelado
 
@@ -88,7 +88,7 @@ public class CsvWriter {
                             } else if ("Canelone".equals(pedidoExistente.getProduct().getPastaType())) {
                                  quantidadeCumulativaCanelone += pedidoExistente.getAmount();
 
-                                // condição para excrever ordem que exceder a qtd limite
+                                // condição para escrever ordem que exceder a qtd limite
                                 if ((quantidadeCumulativaCanelone) > 1600) {
                                     pedidoExistente.setStatus("Cancelado"); // coloca o status da ordem como cancelado
 
@@ -110,7 +110,7 @@ public class CsvWriter {
                             } else if ("Talharim".equals(pedidoExistente.getProduct().getPastaType())) {
                                 quantidadeCumulativaTalharim += pedidoExistente.getAmount();
 
-                                // condição para excrever ordem que exceder a qtd limite
+                                // condição para escrever ordem que exceder a qtd limite
                                 if ((quantidadeCumulativaTalharim) > 1000) {
                                     pedidoExistente.setStatus("Cancelado"); // coloca o status do pedido como cancelado
 
